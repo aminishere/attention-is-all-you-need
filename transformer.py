@@ -1,6 +1,6 @@
 import torch
-from encoder_block import Encoder
-from decoder_block import Decoder
+from components.encoder_block import Encoder
+from components.decoder_block import Decoder
 import torch.nn as nn
 
 class Transformer(nn.Module):
@@ -16,5 +16,5 @@ class Transformer(nn.Module):
         decoder_output=decoder_input
         for layer in self.decoder_blocks:
             decoder_output=layer(decoder_output, encoder_output, mask)
-        output1=self.final_layer(decoder_output)
-        return output1
+        logits=self.final_layer(decoder_output)
+        return logits
