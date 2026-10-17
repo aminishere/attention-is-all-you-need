@@ -1,7 +1,7 @@
 import torch
-from components.embeddings import Embeddings
+from components.embeddings import Embedding
 
-model= Embeddings(n=1000, d_model=512)
+model= Embedding(n=1000, d_model=512)
 
 x= torch.randint(0,1000, (2,5))
 

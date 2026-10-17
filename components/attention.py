@@ -1,5 +1,6 @@
 import torch
 import math
+import torch.nn as nn
 
 def scaled_dot_product_attention(Q,K,V):
     d_k= Q.size(-1)
@@ -14,13 +15,12 @@ class MultiHeadAttention(nn.Module):
         super().__init__()
         self.head=head
         self.d_model=d_model
-        self.d_k=d_model/head
+        self.d_k=d_model//head
         self.Wq=nn.Linear(self.d_model, self.d_model)
         self.Wk=nn.Linear(self.d_model, self.d_model)
         self.Wv=nn.Linear(self.d_model, self.d_model)
         self.Wo=nn.Linear(self.d_model, self.d_model)
-
-     def forward(self, X):
+    def forward(self, X):
          Q=self.Wq(X)
          Q=Q.reshape(Q.size(0), Q.size(1), self.head, self.d_k)
          K=self.Wk(X)

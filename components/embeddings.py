@@ -4,7 +4,7 @@ import math
 
 
 
-class Embeddings(nn.Module):
+class Embedding(nn.Module):
     def __init__(self, n, d_model):
         super().__init__()
         self.d_model=d_model
